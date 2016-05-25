@@ -18,8 +18,9 @@ global Codes
 Codes = pd.read_csv("..\\data\\czg.txt", converters={'code':str})
 
 global F_one
-F_one = open('..\\data\\one.txt',"w")
 F_bear = open('..\\data\\bear.txt',"w")
+F_one = open('..\\data\\one.txt',"w")
+
 
 F_ONEH = open('C:\\zd_zszq\\T0002\\blocknew\\oneh.blk',"w")
 F_ONES = open('C:\\zd_zszq\\T0002\\blocknew\\ones.blk',"w")
