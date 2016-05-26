@@ -182,6 +182,7 @@ def Comp_gs(code):
 		df.to_sql(t_name_b, G_DBengine, if_exists='append')
 	
 ################main
+me.SndEmail(subject='CBASE is start.........')	
 if Is_Debug:
 	Comp_gs('600519')
 else:	
@@ -190,5 +191,5 @@ else:
 		code = Codes.loc[i, 'code']
 		print me.GetNowTime() + 'start comput.........[%d of %d] '%(i,Codes.index.size) , code
 		Comp_gs(code)
-	me.SndEmail(subject='CBASE is over.........')	
+	
 

@@ -51,4 +51,4 @@ df = Codes[Codes.iscz == True]
 
 df.to_sql('hy900001', G_DBengine, if_exists='replace')
 
-me.SndEmail(subject='CCZ is OK.........')	
+

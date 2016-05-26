@@ -78,7 +78,6 @@ def Chy_date(date2):
 	HYdf.iat[ind,md.BI_p120d2+1] = dm.p120d2
 
 ##########################################################	
-#me.SndEmail([],subject='CHY is starting.........')
 for i in range(len(md.HYL)):
 	t_name = 'hy' + md.HYL[i][0]
 	if me.IsTableExist(t_name,G_DBengine) == False:
@@ -88,4 +87,3 @@ for i in range(len(md.HYL)):
 	if Hycode.index.size == 0:
 		continue
 	Chy_Com_hy(md.HYL[i][0])
-me.SndEmail(subject='CHY is over.........')

@@ -33,4 +33,3 @@ for i in range(Codes.index.size):
 	Codes.iat[i, 7] = 100 - float(i) / Codes.index.size * 100
 Codes.to_csv('../data/qdpm.txt')	
 
-me.SndEmail(subject='CQDPM is OK.........')	

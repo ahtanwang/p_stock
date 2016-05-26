@@ -79,7 +79,7 @@ def down_fin(year, season):
 			print 'ValueError:', e
 		
 ####################################################################
-#me.SndEmail([],subject='DDK is starting.........')
+me.SndEmail(subject='DDK is start.........')
 G_DBengine = create_engine('mysql://root:pass@127.0.0.1/mystock?charset=utf8')	
 print me.GetNowTime() + 'start down_CodeName.........'
 down_CodeName()	
@@ -90,7 +90,7 @@ for i in range(G_CODE.index.size):
 	print me.GetNowTime() + 'start down_dk_all.........[%d of %d] '%(i,G_CODE.index.size) + G_CODE.index[i]
 	down_dk_all(G_CODE.index[i], i)
 G_CODE.to_csv('../data/codename.txt')	
-me.SndEmail(subject='DDK is over.........')
+
 
 
 
