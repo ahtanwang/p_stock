@@ -192,7 +192,7 @@ for i in range(DF.index.size):
 		
 ######################################## hy.txt #######################
 F_hy.write('%s\n\n'%(str(DATE)[0:10]))
-F_hy.write('syl30 < 0 B,else . or *\n')
+F_hy.write('syl30 < 0 .,else + or *\n')
 for i in range(DF.index.size):
 	hycode = DF.iat[i, md.BI_p120d2+1]
 	hyname = DF.iat[i, md.BI_p120d2+2]
@@ -223,11 +223,11 @@ for i in range(DF.index.size):
 	
 	for k in range(30, -1, -1):		
 		if df.iat[num-1-k, md.BI_syl30] < 0:
-			tag_30 = 'B'
-		elif df.iat[num-1-k, md.BI_syl30] > 10:
-			tag_30 = '-'
-		else:		
 			tag_30 = '.'
+		elif df.iat[num-1-k, md.BI_syl30] > 10:
+			tag_30 = '*'
+		else:		
+			tag_30 = '+'
 		F_hy.write('%s'%tag_30)
 	F_hy.write('[%6.2f]'%df.iat[num-1-k, md.BI_syl30])	
 	
@@ -274,7 +274,7 @@ for i in range(DF.index.size):
 	
 ######################################## hy_l.txt #######################
 F_hy_l.write('%s\n\n'%(str(DATE)[0:10]))
-F_hy_l.write('syl30 < 0 B,else . or *\n')
+F_hy_l.write('syl30 < 0 .,else + or *\n')
 for i in range(DF.index.size):
 	hycode = DF.iat[i, md.BI_p120d2+1]
 	hyname = DF.iat[i, md.BI_p120d2+2]
@@ -305,11 +305,11 @@ for i in range(DF.index.size):
 	
 	for k in range(150, -1, -1):		
 		if df.iat[num-1-k, md.BI_syl30] < 0:
-			tag_30 = 'B'
-		elif df.iat[num-1-k, md.BI_syl30] > 10:
-			tag_30 = '-'
-		else:		
 			tag_30 = '.'
+		elif df.iat[num-1-k, md.BI_syl30] > 10:
+			tag_30 = '*'
+		else:		
+			tag_30 = '+'
 		F_hy_l.write('%s'%tag_30)
 	F_hy_l.write('[%6.2f]'%df.iat[num-1-k, md.BI_syl30])	
 	
