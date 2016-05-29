@@ -19,7 +19,7 @@ df['fm2'] = 0.0
 df['fm1'] = 0.0
 df['num'] = int(0)
 
-df2 = df.head(120)
+df2 = df.head(12 * 15)
 for i in range(df2.index.size):
 	m2 = float(df2.loc[i,'m2'])
 	m1 = float(df2.loc[i,'m1'])

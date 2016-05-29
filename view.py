@@ -25,6 +25,42 @@ def Pinghua(df, index, days):
 	pass
 
 
+def View_10X(plt,df, d):
+    size = df.index.size
+    d_size = size / 10
+    plt.xticks(range(0, size, d_size))
+    ax=plt.gca() 
+    sL = []
+
+    if ( d == '123'):
+        arr = range(0, size, d_size)
+        for i in range(10):
+            sL.append(str(df.iat[arr[i],1])[0:10])
+        sL.append(str(df.iat[size-1,1])[0:10]) 
+        ax.set_xticklabels(sL, rotation = 90)
+
+    if (d == '321'):
+        arr = range(size-1, 0, -1 * d_size)
+        for i in range(10):
+            sL.append(df.iat[arr[i],1])
+        sL.append(df.iat[0,1])    
+        ax.set_xticklabels(sL)
+    
+def View_10X_Hy(plt,df, d):
+    size = df.index.size
+    d_size = size / 10
+    plt.xticks(range(0, size, d_size))
+    ax=plt.gca() 
+    sL = []
+
+    if ( d == '123'):
+        arr = range(0, size, d_size)
+        for i in range(10):
+            sL.append(str(df.iat[arr[i],2])[0:10])
+        sL.append(str(df.iat[size-1,2])[0:10]) 
+        ax.set_xticklabels(sL, rotation = 90)
+
+
 def HY_isIN_HYL(hyname):
 	for i in range(len(md.HYL)):
 		if hyname == md.HYL[i][0]:
@@ -42,11 +78,11 @@ def ShowGS(com1, com2, com3):
 			return
 		df = pd.read_sql_table(tname,G_DBengine)
 		if df.index.size > 250:
-			df = df.drop(range(df.index.size - 250))
-		me.PinghuaDF(df, md.BI_syl30+1, 5)
-		plt.fill_between(df.index, df['syl30'], 0, where=df['syl30']>0,facecolor='red')
-		plt.fill_between(df.index, df['syl30'], 0, where=df['syl30']<=0,facecolor='green')
-		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['date'])))
+			df1 = df.drop(range(df.index.size - 250))
+		me.PinghuaDF(df1, md.BI_syl30+1, 5)
+		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df1['date'])))
+		plt.fill_between(df1.index, df1['syl30'], 0, where=df1['syl30']>0,facecolor='red')
+		plt.fill_between(df1.index, df1['syl30'], 0, where=df1['syl30']<=0,facecolor='green')
 		
 	elif com2 == 'syl250':
 		tname = 'b'+com1
@@ -58,7 +94,7 @@ def ShowGS(com1, com2, com3):
 		plt.fill_between(df.index, df['syl250'], 0, where=df['syl250']>0,facecolor='red')
 		plt.fill_between(df.index, df['syl250'], 0, where=df['syl250']<=0,facecolor='green')
 		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['date'])))
-
+		View_10X(plt,df, '123')
 		
 	elif com2 == 'hb':
 		tname = 'f'+com1	
@@ -111,6 +147,7 @@ def ShowHY(com1, com2, com3):
 		plt.fill_between(df.index, df['syl250'], 0, where=df['syl250']>0,facecolor='red')
 		plt.fill_between(df.index, df['syl250'], 0, where=df['syl250']<=0,facecolor='green')
 		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['date'])))
+		View_10X_Hy(plt,df, '123')
 
 	elif com2 == 'p120d':
 		tname = 'hyb' + com1
@@ -122,7 +159,8 @@ def ShowHY(com1, com2, com3):
 		plt.fill_between(df.index, df['p120d2'], 0, where=df['p120d2']>0,facecolor='red')
 		plt.fill_between(df.index, df['p120d2'], 0, where=df['p120d2']<=0,facecolor='green')
 		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['date'])))
-		
+		View_10X_Hy(plt,df, '123')		
+
 	elif com2 == 'p30d':
 		tname = 'hyb' + com1
 		if me.IsTableExist(tname, G_DBengine) == False:
@@ -177,10 +215,17 @@ def ShowMoney(com1, com2, com3):
 		me.PinghuaDF(df, 19, 5)	
 		me.PinghuaDF(df, 20, 5)	
 		df[['fm2','fm1']].plot(linewidth=LW)		
-		df['m1dm2'].plot(color='red', secondary_y=True, linewidth=LW*2)	
+		df['m1dm2'].plot(color='red', secondary_y=True, linewidth=LW)	
 		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['month'])))
-		ax=plt.gca()  
-		ax.set_xticklabels([df.iat[119,1], df.iat[99,1], df.iat[79,1], df.iat[59,1], df.iat[39,1], df.iat[19,1]])
+
+        View_10X(plt, df, '321')
+		#plt.xticks(range(0, df.index.size, df.index.size/10))
+		
+		#ax=plt.gca()  
+		#size = df.index.size
+		#d_size = size / 9
+		#ax.set_xticklabels([df.iat[size-1,1], df.iat[size-1-d_size,1], df.iat[size-1-d_size*2,1], df.iat[size-1-d_size*3,1], df.iat[size-1-d_size*4,1], \
+		#    df.iat[size-1-d_size*5,1],df.iat[size-1-d_size*6,1], df.iat[size-1-d_size*7,1], df.iat[size-1-d_size*8,1] ,df.iat[0,1]])
 
 	plt.show()
 	plt.close()	
