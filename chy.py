@@ -37,10 +37,12 @@ def Chy_Com_hy(hyname):
 	for i in range(Hytime.index.size):
 		date2 = Hytime.iat[i, 0]
 		print 'Chy_Com_hy.....%s...'%hyname, Hycode.index.size, date2
+		if hyname == '102' and i < 500:
+			continue
 		if is_table_exist:
 			if me.Is_dateInTable(t_name, G_DBengine, date2) == True:
 				continue
-		Chy_date(date2)	
+		if Chy_date(date2) == True:
 		HYdf.to_sql(t_name, G_DBengine, if_exists='append')
 		is_table_exist = True	
 		HYdf = HYdf.drop(0)
@@ -63,6 +65,9 @@ def Chy_date(date2):
 		elif df.index.size != 0:
 			df_t = df_t.append(df)
 			
+	if 	is_first == True:
+		return False
+		
 	dm = df_t.mean()
 	ds = df_t.sum()
 	ind = HYdf.index.size - 1
@@ -76,6 +81,7 @@ def Chy_date(date2):
 		HYdf.iat[ind,md.BI_syl250+1] = (ds.sy250 / ds.je250) * 100
 	HYdf.iat[ind,md.BI_p30d2+1] = dm.p30d2
 	HYdf.iat[ind,md.BI_p120d2+1] = dm.p120d2
+	return True
 
 ##########################################################	
 for i in range(len(md.HYL)):

@@ -387,6 +387,8 @@ for i in range(DF.index.size):
 	
 F_hy.close()
 F_dp.close()	
+F_hy_l.close()
+F_dp_l.close()	
 
 if is_mail:
 	me.SndEmail(subject='DP is OK.........', filename='..\\data\\dp.txt')	
