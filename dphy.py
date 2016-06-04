@@ -104,7 +104,7 @@ for i in range(DF.index.size):
 	F_dp.write('%s '%(DF.iat[i, md.BI_p120d2+1]))
 	
 	t_name = 'hyb' + hycode
-	sql = 'SELECT * FROM ' +  t_name + ' ORDER BY date DESC  limit 50'
+	sql = 'SELECT * FROM ' +  t_name + ' ORDER BY date DESC  limit 150'
 	df = pd.read_sql_query(sql, G_DBengine)
 	del df['level_0']
 	del df['index']
@@ -113,10 +113,7 @@ for i in range(DF.index.size):
 	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
-	
 	num = df.index.size
-		
-	
 	F_dp.write('p30d  ')	
 	for k in range(50, -1, -1):		
 		if df.iat[num-1-k, md.BI_p30d2] >  df.iat[num-1-k - 1, md.BI_p30d2]:
@@ -125,6 +122,35 @@ for i in range(DF.index.size):
 			tag_30 = '.'
 		F_dp.write('%s'%tag_30)
 	F_dp.write('[%6.0f]\n'%df.iat[num-1-k, md.BI_p30d2])	
+
+F_dp.write('\n\n')
+F_dp.write('P120d :today > yesterday + \n')		
+for i in range(DF.index.size):
+	hycode = DF.iat[i, md.BI_p120d2+1]
+	if int(hycode) > 1000:
+		continue
+	F_dp.write('%s '%(DF.iat[i, md.BI_p120d2+1]))
+	
+	t_name = 'hyb' + hycode
+	sql = 'SELECT * FROM ' +  t_name + ' ORDER BY date DESC  limit 150'
+	df = pd.read_sql_query(sql, G_DBengine)
+	del df['level_0']
+	del df['index']
+	df =  df.sort_values('date')
+	me.PinghuaDF(df, md.BI_syl30, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
+	me.PinghuaDF(df, md.BI_p30d2, 5)
+	me.PinghuaDF(df, md.BI_syl250, 30)
+	num = df.index.size
+	F_dp.write('p120d ')	
+	for k in range(50, -1, -1):		
+		if df.iat[num-1-k, md.BI_p120d2] >  df.iat[num-1-k - 1, md.BI_p120d2]:
+			tag_120 = '+'
+		else:		
+			tag_120 = '.'
+		F_dp.write('%s'%tag_120)
+	F_dp.write(' \n')	
+
 		
 ######################################## dp_l.txt #######################
 F_dp_l.write('code [p120d  p30d]  [syl250  syl30]\n')
@@ -188,6 +214,38 @@ for i in range(DF.index.size):
 			tag_30 = '.'
 		F_dp_l.write('%s'%tag_30)
 	F_dp_l.write('[%6.0f]\n'%df.iat[num-1-k, md.BI_p30d2])	
+
+
+F_dp_l.write('\n\n')
+F_dp_l.write('P120d :today > yesterday +\n')		
+for i in range(DF.index.size):
+	hycode = DF.iat[i, md.BI_p120d2+1]
+	if int(hycode) > 1000:
+		continue
+	F_dp_l.write('%s '%(DF.iat[i, md.BI_p120d2+1]))
+	
+	t_name = 'hyb' + hycode
+	sql = 'SELECT * FROM ' +  t_name + ' ORDER BY date DESC  limit 200'
+	df = pd.read_sql_query(sql, G_DBengine)
+	del df['level_0']
+	del df['index']
+	df =  df.sort_values('date')
+	me.PinghuaDF(df, md.BI_syl30, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
+	me.PinghuaDF(df, md.BI_p30d2, 5)
+	me.PinghuaDF(df, md.BI_syl250, 30)
+	
+	num = df.index.size
+		
+	
+	F_dp_l.write('p120d ')	
+	for k in range(150, -1, -1):		
+		if df.iat[num-1-k, md.BI_p120d2] >  df.iat[num-1-k - 1, md.BI_p120d2]:
+			tag_120 = '+'
+		else:		
+			tag_120 = '.'
+		F_dp_l.write('%s'%tag_120)
+	F_dp_l.write('[%9.0f]\n'%df.iat[num-1-k, md.BI_p120d2])	
 
 		
 ######################################## hy.txt #######################
