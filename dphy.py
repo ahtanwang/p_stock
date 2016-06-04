@@ -34,7 +34,7 @@ del DF['level_0']
 del DF['index']
 DF =  DF.sort_values('date')
 me.PinghuaDF(DF, md.BI_syl30, 5)
-me.PinghuaDF(DF, md.BI_p120d2, 5)
+me.PinghuaDF(DF, md.BI_p120d2, 30)
 me.PinghuaDF(DF, md.BI_p30d2, 5)
 me.PinghuaDF(DF, md.BI_syl250, 30)
 DF['code'] = '300'
@@ -52,7 +52,7 @@ for i in range(1, len(md.HYL)):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	df['code'] = hycode
@@ -110,7 +110,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	
@@ -173,7 +173,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	
@@ -205,7 +205,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	
@@ -247,7 +247,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	
@@ -287,7 +287,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	
@@ -329,7 +329,7 @@ for i in range(DF.index.size):
 	del df['index']
 	df =  df.sort_values('date')
 	me.PinghuaDF(df, md.BI_syl30, 5)
-	me.PinghuaDF(df, md.BI_p120d2, 5)
+	me.PinghuaDF(df, md.BI_p120d2, 30)
 	me.PinghuaDF(df, md.BI_p30d2, 5)
 	me.PinghuaDF(df, md.BI_syl250, 30)
 	

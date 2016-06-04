@@ -155,7 +155,7 @@ def ShowHY(com1, com2, com3):
 			print 'No table ....%s'%tname
 			return
 		df = pd.read_sql_table(tname,G_DBengine)
-		me.PinghuaDF(df, md.BI_p120d2+2, 5)	
+		me.PinghuaDF(df, md.BI_p120d2+2, 30)	
 		plt.fill_between(df.index, df['p120d2'], 0, where=df['p120d2']>0,facecolor='red')
 		plt.fill_between(df.index, df['p120d2'], 0, where=df['p120d2']<=0,facecolor='green')
 		plt.title(com1 + '  ' +  com2 + '  '  + str(max(df['date'])))
