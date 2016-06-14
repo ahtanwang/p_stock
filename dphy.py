@@ -436,6 +436,8 @@ for i in range(DF.index.size):
 		df1 = hy_gongsis[hy_gongsis.code == gs]
 		if df1.index.size == 0:
 			continue
+		elif gs_name[0:1] == '*' or gs_name[0:1] == 'S':
+			continue
 		else:
 			F_hy.write('      %6s'%gs)
 			F_hy.write('      %12s\n'%gs_name)
